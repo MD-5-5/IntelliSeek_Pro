@@ -289,7 +289,7 @@ const VaultConnect = () => {
     setStatus('testing')
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/content?user_id=${input.trim()}`,
+        `${import.meta.env.VITE_VAULT_API_URL}/api/content?user_id=${input.trim()}`,
         { signal: AbortSignal.timeout(3000) }
       )
       const data = await res.json()
