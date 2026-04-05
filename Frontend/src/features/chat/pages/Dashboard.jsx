@@ -239,7 +239,7 @@ const VaultBadge = ({ vaultSources }) => {
         {vaultSources.map(item => (
           <a
             key={item.id}
-            href={item.url || 'http://localhost:5173/vault'}
+            href={item.url || import.meta.env.VITE_VAULT_URL || 'vault'}
             target="_blank"
             rel="noreferrer"
             style={{
@@ -289,7 +289,7 @@ const VaultConnect = () => {
     setStatus('testing')
     try {
       const res = await fetch(
-        `http://localhost:5000/api/content?user_id=${input.trim()}`,
+        `${import.meta.env.VITE_API_URL}/api/content?user_id=${input.trim()}`,
         { signal: AbortSignal.timeout(3000) }
       )
       const data = await res.json()

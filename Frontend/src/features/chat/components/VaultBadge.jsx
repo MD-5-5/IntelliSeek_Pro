@@ -15,7 +15,7 @@ export default function VaultBadge({ vaultSources }) {
         {vaultSources.map(item => (
           <a
             key={item.id}
-            href={item.url || 'http://localhost:5173/vault'}
+            href={item.url || import.meta.env.VITE_VAULT_URL || 'vault'}
             target="_blank"
             rel="noreferrer"
             className={styles.item}
