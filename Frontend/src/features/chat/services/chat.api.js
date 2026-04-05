@@ -33,3 +33,4 @@ export const deleteChat = async(chatId)=>{
     const response = await api.delete(`/api/chats/delete/${chatId}`)
     return response.data
 }
+
