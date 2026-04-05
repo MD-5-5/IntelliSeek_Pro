@@ -8,7 +8,8 @@ export function iniSocket(httpServer){
             origin: [
       "http://localhost:5173",
       "http://localhost:5174",
-      "http://localhost:3000"
+      "http://localhost:3000",
+      "https://neuro-vault-swart.vercel.app",
     ],
             credentials: true,
         }

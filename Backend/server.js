@@ -8,7 +8,7 @@ import { iniSocket } from './src/sockets/server.socket.js';
 
 // load environment variables from .env file
 const httpServer = http.createServer(app);
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000 ;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/perplexity';
 
 iniSocket(httpServer);

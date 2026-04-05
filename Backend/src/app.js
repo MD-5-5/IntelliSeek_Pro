@@ -18,6 +18,7 @@ app.use(cors({
             "http://localhost:5173",
             "http://localhost:5174",
             "http://localhost:3000",
+            "https://neuro-vault-swart.vercel.app"
         ];
 
         // Allow any Vercel preview deployment for this project
