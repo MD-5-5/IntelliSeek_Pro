@@ -983,3 +983,6 @@ const Dashboard = () => {
 }
 
 export default Dashboard
+
+
+console.log("ENV CHECK:", import.meta.env);
