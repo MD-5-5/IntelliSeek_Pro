@@ -2,10 +2,6 @@ import axios from 'axios'
 
 const NEUROVAULT_URL = process.env.NEUROVAULT_URL || 'http://localhost:5000'
 
-/**
- * Fetch relevant vault context for a query
- * Silently fails if NeuroVault is not running
- */
 export async function getVaultContext(query, neuroVaultUserId) {
   if (!neuroVaultUserId || !query) return []
 
@@ -23,14 +19,12 @@ export async function getVaultContext(query, neuroVaultUserId) {
     return res.data?.results || []
   } catch (err) {
     // NeuroVault offline or slow — IntelliSeek still works normally
-    console.warn('⚠️ NeuroVault not available:', err.message)
+    console.warn('NeuroVault not available:', err.message)
     return []
   }
 }
 
-/**
- * Format vault results into context string for AI prompt
- */
+
 export function formatVaultContext(vaultResults) {
   if (!vaultResults?.length) return null
 
