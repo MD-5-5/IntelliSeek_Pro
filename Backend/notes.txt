@@ -1,0 +1,6 @@
+Generative AI => content generate kerna ek patter ke basis per [text, code, audio, video]
+
+ASP => AI SERVICE PROVIDER
+                1) Train an LLM
+                2) Hosting an LLM
+                3)Providing the APIs to access the LLM

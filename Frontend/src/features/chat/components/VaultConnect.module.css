@@ -1,0 +1,88 @@
+.connected {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  flex-shrink: 0;
+}
+
+.text { color: #10b981; }
+
+.disconnect {
+  background: transparent;
+  border: none;
+  color: #555;
+  font-size: 0.72rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin-left: 2px;
+}
+
+.disconnect:hover { color: #ef4444; }
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.input {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(124,58,237,0.35);
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  color: #e0e0ff;
+  font-size: 0.78rem;
+  outline: none;
+  min-width: 220px;
+}
+
+.input:focus { border-color: #7c3aed; }
+
+.connectBtn {
+  background: #7c3aed;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.cancel {
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.error {
+  width: 100%;
+  font-size: 0.72rem;
+  color: #ef4444;
+}
+
+.connectPrompt {
+  background: rgba(124,58,237,0.1);
+  border: 1px solid rgba(124,58,237,0.25);
+  color: #a78bfa;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.connectPrompt:hover {
+  background: rgba(124,58,237,0.2);
+}
