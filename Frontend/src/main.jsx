@@ -9,3 +9,7 @@ createRoot(document.getElementById('root')).render(
       <App />
     </Provider>
 )
+
+
+console.log("🔥 APP LOADED");
+console.log("ENV:", import.meta.env);
