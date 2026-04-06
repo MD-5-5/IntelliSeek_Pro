@@ -9,7 +9,7 @@ export async function sendMessage(req, res) {
 
   // neuroVaultUserId is sent from frontend when user has connected their vault
   const neuroVaultUserId = req.body.neuroVaultUserId || null
-    console.log('🧠 neuroVaultUserId:', neuroVaultUserId) 
+  console.log('🧠 neuroVaultUserId from frontend:', neuroVaultUserId ? '✓ Set' : '❌ Not set') 
 
   let chat = null
 
@@ -50,12 +50,20 @@ export async function sendMessage(req, res) {
     ])
 
     vaultResults = vaultData.status === 'fulfilled' ? vaultData.value : []
+    console.log('📦 vaultResults retrieved:', vaultResults.length, 'items')
+    
     const vaultContext = formatVaultContext(vaultResults)
+    console.log('📝 vaultContext formatted:', vaultContext ? '✅ Has content' : '❌ Empty/null')
+    if (vaultContext) {
+      console.log('📄 vaultContext snippet:', vaultContext.substring(0, 200) + '...')
+    }
 
     // Use hybrid response if vault has relevant results
+    console.log('🤖 Generating HYBRID response with vault context')
     result = await generateHybridResponse(messages, vaultContext)
   } else {
     // Normal response — no vault connected
+    console.log('🤖 Generating NORMAL response (no vault)')
     result = await generateResponse(messages)
   }
   // ── End NeuroVault Integration ──

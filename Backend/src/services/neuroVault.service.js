@@ -1,25 +1,35 @@
 import axios from 'axios'
 
 const NEUROVAULT_URL = process.env.NEUROVAULT_URL || 'http://localhost:5000'
+const VAULT_API_KEY = process.env.VAULT_API_KEY || ''
 
 export async function getVaultContext(query, neuroVaultUserId) {
   if (!neuroVaultUserId || !query) return []
 
   try {
-    const res = await axios.post(
-      `${NEUROVAULT_URL}/api/search/vault-context`,
+    console.log(`🔵 [NeuroVault] Fetching vault data for user: ${neuroVaultUserId}`)
+    
+    const res = await axios.get(
+      `${NEUROVAULT_URL}/api/content`,
       {
-        query,
-        user_id: neuroVaultUserId,
-        limit: 4
-      },
-      { timeout: 3000 } // 3s timeout — don't slow down IntelliSeek if vault is down
+        params: {
+          user_id: neuroVaultUserId,
+          query: query  // Send query as param for filtering
+        },
+        headers: {
+          'x-vault-api-key': VAULT_API_KEY
+        },
+        timeout: 3000 // 3s timeout — don't slow down IntelliSeek if vault is down
+      }
     )
 
-    return res.data?.results || []
+    // NeuroVault returns { success: true, content: [...] }
+    const vaultContent = res.data?.content || []
+    console.log(`🟢 [NeuroVault] Retrieved ${vaultContent.length} items from vault`)
+    return vaultContent
   } catch (err) {
     // NeuroVault offline or slow — IntelliSeek still works normally
-    console.warn('NeuroVault not available:', err.message)
+    console.warn('⚠️  [NeuroVault] Not available:', err.message)
     return []
   }
 }
